@@ -4,14 +4,61 @@
       <title>Andrew Wooldridge (triptych) on GitHub</title>
 		<script src="http://yui.yahooapis.com/3.3.0/build/yui/yui-min.js"></script>
 		<script>
-		YUI().use("node", "event", function(Y){
-			Y.log("YUI stuff loading")
+		YUI().use("node", "event", "jsonp", function(Y){
+			Y.log("YUI stuff loading");
+			
+			var limit = 20,        // how many repos to list
+            	login = 'triptych', // your username
+            	url = 'http://github.com/api/v1/json/' + login + '?callback={callback}'; //The URL of the JSON request
+ 
+			GH = function(data){
+				Y.log(data);
+				var repos = data.user.repositories;
+				
+				repos.sort(function(a, b) {
+                	return b.watchers - a.watchers
+            	});
+
+            	Y.each(repos.slice(0, limit), function(v, k) {
+                	if (!v.fork && (v.name.indexOf('github.com') == -1)) {
+                    	Y.one('#projects').appendChild(Y.Node.create('<li><a href="' + v.url + '">' + v.name + '</a></li>'));
+                	}
+            	});
+				
+			}
+			Y.jsonp(url, {
+				on: {
+					success:GH
+				},
+				timeout: 3000
+			});
+			
 		})
 		</script>
+		<style>
+			
+			body{
+				background-color: #310062;
+				padding: 8px;
+			}
+			h1 {
+				color: #FFF;
+				text-shadow: 2px 2px 2px #000;
+			}
+			a {
+				color: #FFF;
+				text-decoration: none;
+			}
+			
+			.ft {
+				font-size: .5em;
+			}
+		</style>
     </head>
     <body>
-
-
+	<h1>My Github Projects<h1>
+	<ul id="projects"></ul>
+	<div class="ft">This page based off of code from <a href="https://github.com/davglass/davglass.github.com">Dav Glass</a>.</div>
 
     </body>
 </html>
