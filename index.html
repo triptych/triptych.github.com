@@ -4,10 +4,11 @@
       <title>Andrew Wooldridge (triptych) on GitHub</title>
 		<script src="http://yui.yahooapis.com/3.3.0/build/yui/yui-min.js"></script>
 		<script>
+                // yui stuff
 		YUI().use("node", "event", "jsonp", function(Y){
 			Y.log("YUI stuff loading");
 			
-			var limit = 20,        // how many repos to list
+			var limit = 20, // how many repos to list
             	login = 'triptych', // your username
             	url = 'http://github.com/api/v1/json/' + login + '?callback={callback}'; //The URL of the JSON request
  
