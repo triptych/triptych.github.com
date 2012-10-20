@@ -14,8 +14,8 @@
                     
                     var handler = function(data){
                         Y.log(data);
-                        var repos = data;
-                        Y.Array.each(data, function(itm,idx,arr){
+                        var repos = data.data;
+                        Y.Array.each(repos, function(itm,idx,arr){
                             var name = itm.name;
                             var url = itm.html_url;
                             
