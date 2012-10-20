@@ -10,7 +10,7 @@
                     // https://api.github.com/users/triptych/repos
                     // https://api.github.com/users/triptych/repos?callback=foo
                     var username = "triptych";
-                    var url = "https://api.github.com/users/" + username + "?callback={callback}"; // URL of JSON request
+                    var url = "https://api.github.com/users/" + username + "/repos?callback={callback}"; // URL of JSON request
                     
                     var handler = function(data){
                         Y.log(data);
