@@ -2,10 +2,32 @@
 <html>
   <head>
       <title>Andrew Wooldridge (triptych) on GitHub</title>
-		<script src="http://yui.yahooapis.com/3.7.3/build/yui/yui-min.js"></script>
+		<script src="https://yui.yahooapis.com/3.7.3/build/yui/yui-min.js"></script>
 		<script>
                 // yui stuff
-		YUI().use("node", "event", "jsonp", function(Y){
+                YUI().use("node", "event", "jsonp", function(Y){
+                    Y.log("YUI stuff loading");
+                    // https://api.github.com/users/triptych/repos
+                    // https://api.github.com/users/triptych/repos?callback=foo
+                    var username = "triptych";
+                    var url = "https://api.github.com/users/" + username + "?callback={callback}"; // URL of JSON request
+                    
+                    var handler = function(data){
+                        Y.log(data);
+                        
+                        }
+                    
+                    Y.jsonp(url, {
+                        on: {
+                            success:handler
+                            },
+                            timeout:3000
+                        });
+                    });
+                
+                
+	/**
+    YUI().use("node", "event", "jsonp", function(Y){
 			Y.log("YUI stuff loading");
 			
 			var limit = 20, // how many repos to list
@@ -22,10 +44,9 @@
 
             	Y.each(repos.slice(0, limit), function(v, k) {
                 	if (!v.fork && (v.name.indexOf('github.com') == -1)) {
-                    	Y.one('#projects').appendChild(Y.Node.create('<li><a href="' + v.url + '">' + v.name + '</a></li>'));
-                	}
-            	});
-				
+                    	Y.one('#projects').appendChild(
+                        Y.Node.create('<li><a href="' + v.url + '">' + v.name + '</a></li>'))}
+            	});				
 			}
 			Y.jsonp(url, {
 				on: {
@@ -35,10 +56,27 @@
 			});
 			
 		})
+        **/
 		</script>
-
-
-	<link rel="stylesheet" href="css/triptych.css">
+		<style>
+			
+			body{
+				background-color: #310062;
+				padding: 8px;
+			}
+			h1 {
+				color: #FFF;
+				text-shadow: 2px 2px 2px #000;
+			}
+			a {
+				color: #FFF;
+				text-decoration: none;
+			}
+			
+			.ft {
+				font-size: .5em;
+			}
+		</style>
     </head>
     <body>
 	<h1>My Github Projects<h1>
