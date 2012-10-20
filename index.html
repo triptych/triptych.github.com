@@ -33,37 +33,7 @@
                     });
                 
                 
-	/**
-    YUI().use("node", "event", "jsonp", function(Y){
-			Y.log("YUI stuff loading");
-			
-			var limit = 20, // how many repos to list
-            	login = 'triptych', // your username
-            	url = 'http://github.com/api/v1/json/' + login + '?callback={callback}'; //The URL of the JSON request
- 
-			GH = function(data){
-				Y.log(data);
-				var repos = data.user.repositories;
-				
-				repos.sort(function(a, b) {
-                	return b.watchers - a.watchers
-            	});
-
-            	Y.each(repos.slice(0, limit), function(v, k) {
-                	if (!v.fork && (v.name.indexOf('github.com') == -1)) {
-                    	Y.one('#projects').appendChild(
-                        Y.Node.create('<li><a href="' + v.url + '">' + v.name + '</a></li>'))}
-            	});				
-			}
-			Y.jsonp(url, {
-				on: {
-					success:GH
-				},
-				timeout: 3000
-			});
-			
-		})
-        **/
+	
 		</script>
 		<style>
 			
