@@ -1,4 +1,4 @@
-This is my triptych page inside github... where my projects live.
+Triptych
 =================================================================
 
-Guess I need to learn Markdown...
+Welcome to my new Jekyl created page. More to come!
