@@ -17,8 +17,8 @@
       <div class="inner">
         <header>
             <h1><a href="{{site.url}}">{{site.title}}</a></h1>
-          <h2>{{ page.title | default: site.title | default: site.github.repository_name }}</h2>
-          <h3>{{ page.description | default: site.description | default: site.github.project_tagline }}</h3>
+          <h2><a href="{{relative_url}}">{{ page.title | default: site.title | default: site.github.repository_name }}</a></h2>
+          <!-- <h3>{{ page.description | default: site.description | default: site.github.project_tagline }}</h3> -->
             
         </header>
         
